@@ -41,8 +41,12 @@ function renderCountdown() {
   const m = Math.floor(t / 60000) % 60;
   const s = Math.floor(t / 1000) % 60;
 
-  const towerHtml = `${d}d : ${h}h : ${m}m : ${s}s`;
-  towerCountdown.innerHTML = towerHtml;
+  const html = `
+    <span class="countdown-unit"><div class="countdown-value">${d}</div><div class="countdown-label">days</div></span> :
+    <span class="countdown-unit"><div class="countdown-value">${h}</div><div class="countdown-label">hours</div></span> :
+    <span class="countdown-unit"><div class="countdown-value">${m}</div><div class="countdown-label">minutes</div></span> :
+    <span class="countdown-unit"><div class="countdown-value">${s}</div><div class="countdown-label">seconds</div></span>
+  `;
 
   countdown.innerHTML = html;
   towerCountdown.innerHTML = html;
@@ -66,10 +70,6 @@ document.getElementById('voteBtn').onclick = async () => {
   loadStats();
 };
 
-function closeOverlay() {
-  document.getElementById('overlay').style.display = 'none';
-}
-
 shareBtn.onclick = async () => {
   if (!selected) return;
 
@@ -91,6 +91,10 @@ shareBtn.onclick = async () => {
 };
 
 
+function closeOverlay() {
+  document.getElementById('overlay').style.display = 'none';
+}
+
 /* TOWER */
 async function loadStats() {
   const res = await fetch('/stats', { cache: 'no-store' });
@@ -110,7 +114,7 @@ function renderTower(votes) {
   entries.forEach((e,i) => {
     const row = document.createElement('div');
     row.className = 'towerRow';
-    row.style.top = `${95 + i * 26}px`; // +15px start, proper spacing
+    row.style.top = `${80 + i * 24}px`;
     row.innerHTML = `
       <img src="media/driver-names/${e[0]}.png">
       <span>${e[1].toFixed(2)}%</span>
@@ -121,4 +125,3 @@ function renderTower(votes) {
 
 loadStats();
 setInterval(loadStats, 3000);
-
