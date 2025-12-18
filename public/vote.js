@@ -41,12 +41,8 @@ function renderCountdown() {
   const m = Math.floor(t / 60000) % 60;
   const s = Math.floor(t / 1000) % 60;
 
-  const html = `
-    <span class="countdown-unit"><div class="countdown-value">${d}</div><div class="countdown-label">days</div></span> :
-    <span class="countdown-unit"><div class="countdown-value">${h}</div><div class="countdown-label">hours</div></span> :
-    <span class="countdown-unit"><div class="countdown-value">${m}</div><div class="countdown-label">minutes</div></span> :
-    <span class="countdown-unit"><div class="countdown-value">${s}</div><div class="countdown-label">seconds</div></span>
-  `;
+  const towerHtml = `${d}d : ${h}h : ${m}m : ${s}s`;
+  towerCountdown.innerHTML = towerHtml;
 
   countdown.innerHTML = html;
   towerCountdown.innerHTML = html;
@@ -74,6 +70,27 @@ function closeOverlay() {
   document.getElementById('overlay').style.display = 'none';
 }
 
+shareBtn.onclick = async () => {
+  if (!selected) return;
+
+  const imageUrl = `media/completion-photos/${selected}.png`;
+  const response = await fetch(imageUrl);
+  const blob = await response.blob();
+
+  const file = new File([blob], `${selected}.png`, { type: blob.type });
+
+  if (navigator.canShare && navigator.canShare({ files: [file] })) {
+    await navigator.share({
+      files: [file],
+      text: `I voted for ${selected}! Vote now at totallyascientist.com/vote`,
+      url: 'https://totallyascientist.com/vote'
+    });
+  } else {
+    alert('Sharing images is not supported on this device.');
+  }
+};
+
+
 /* TOWER */
 async function loadStats() {
   const res = await fetch('/stats', { cache: 'no-store' });
@@ -93,7 +110,7 @@ function renderTower(votes) {
   entries.forEach((e,i) => {
     const row = document.createElement('div');
     row.className = 'towerRow';
-    row.style.top = `${80 + i * 24}px`;
+    row.style.top = `${95 + i * 26}px`; // +15px start, proper spacing
     row.innerHTML = `
       <img src="media/driver-names/${e[0]}.png">
       <span>${e[1].toFixed(2)}%</span>
@@ -104,3 +121,4 @@ function renderTower(votes) {
 
 loadStats();
 setInterval(loadStats, 3000);
+
