@@ -109,9 +109,15 @@ body { background:black; color:white; margin:0; font-family:Arial }
   z-index:5;
   pointer-events:none;
 }
+/* 🔹 FORCE smaller countdown inside timing tower */
+#towerCountdown.countdown-value {
+  font-size: 18px !important;
+}
 
-.towerCountdown-value { font-size:4px; }
-.towerCountdown-label { font-size:2px; }
+#towerCountdown.countdown-label {
+  font-size: 10px !important;
+}
+
 
 #towerData {
   position:absolute;
@@ -156,6 +162,7 @@ body { background:black; color:white; margin:0; font-family:Arial }
 @media (max-aspect-ratio: 1/1) {
   .grid { grid-template-columns: repeat(2, 1fr); }
 }
+
 
 
 
