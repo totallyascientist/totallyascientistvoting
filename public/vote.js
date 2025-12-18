@@ -72,11 +72,16 @@ function updateTowerCountdown() {
   const seconds = Math.floor(diff / 1000) % 60;
 
   towerCountdownEl.innerHTML = `
-    <span>${days}</span><span class="label">days</span> :
-    <span>${hours}</span><span class="label">hours</span> :
-    <span>${minutes}</span><span class="label">minutes</span> :
-    <span>${seconds}</span><span class="label">seconds</span>
-  `;
+    <div class="countdown-line">
+      <span>${days}</span><span class="label">days</span> :
+      <span>${hours}</span><span class="label">hours</span>
+    </div>
+    <div class="countdown-line">
+      <span>${minutes}</span><span class="label">minutes</span> :
+      <span>${seconds}</span><span class="label">seconds</span>
+    </div>
+`;
+
 }
 
 updateTowerCountdown();
@@ -154,6 +159,7 @@ function renderTower(votes) {
 
 loadStats();
 setInterval(loadStats, 3000);
+
 
 
 
