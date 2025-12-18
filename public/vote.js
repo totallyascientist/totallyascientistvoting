@@ -1,4 +1,12 @@
-const END = new Date('2025-12-27T23:59:00Z');
+const endTime = new Date(
+  new Date().getFullYear(),
+  11, // December (0-indexed)
+  27,
+  23,
+  59,
+  0
+);
+
 const drivers = [
 'rose','tzuyu','jay','bang chan','winter','chaewon','sullyoon','lisa','sana','mingyu','mina','nayeon','jungwon','karina','vernon','jihyo','ning ning','jeongyeon','dino','felix'
 ];
@@ -64,6 +72,15 @@ async function loadStats() {
   renderTower(votes);
 }
 
+function renderTower(stats) {
+  if (!stats || typeof stats !== 'object') return;
+
+  const entries = Object.entries(stats);
+
+  entries.sort((a, b) => b[1] - a[1]);
+
+  // render loop
+}
 function renderTower(votes) {
   const total = Object.values(votes).reduce((a,b)=>a+b,0) || 1;
 
@@ -96,4 +113,5 @@ function renderTower(votes) {
 }
 
 loadStats();
+
 setInterval(loadStats, 3000);
