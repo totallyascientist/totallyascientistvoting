@@ -104,7 +104,7 @@ body { background:black; color:white; margin:0; font-family:Arial }
   text-align:center;
   font-family:'F1';
   color:white;
-  font-size:16px; /* reduced */
+  font-size:6px; /* reduced */
   white-space:nowrap;
   z-index:5;
   pointer-events:none;
@@ -153,4 +153,5 @@ body { background:black; color:white; margin:0; font-family:Arial }
 @media (max-aspect-ratio: 1/1) {
   .grid { grid-template-columns: repeat(2, 1fr); }
 }
+
 
