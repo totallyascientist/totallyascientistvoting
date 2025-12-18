@@ -6,7 +6,7 @@ body { background:black; color:white; margin:0; font-family:Arial }
 
 
 #countdown {
-color:white;
+color:red;
 font-family:'F1';
 text-align:center;
 padding:20px;
@@ -154,4 +154,5 @@ object-fit:cover;
 
 @media (max-aspect-ratio: 1/1) {
   .grid { grid-template-columns: repeat(2, 1fr); }
+
 }
