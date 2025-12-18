@@ -1,4 +1,5 @@
 const END = new Date('2025-12-27T23:59:00Z');
+const TOWER_END = new Date('2025-12-27T23:59:00Z');
 
 const drivers = [
   'rose','tzuyu','jay','bang chan','winter','chaewon','sullyoon','lisa',
@@ -49,11 +50,37 @@ function renderCountdown() {
   `;
 
   countdown.innerHTML = html;
-  towerCountdowm.innerHTML = html;
 }
 
 setInterval(renderCountdown, 1000);
 renderCountdown();
+
+const towerCountdownEl = document.getElementById('towerCountdownSimple');
+
+function updateTowerCountdown() {
+  const now = new Date();
+  let diff = TOWER_END - now;
+
+  if (diff <= 0) {
+    towerCountdownEl.textContent = 'VOTING CLOSED';
+    return;
+  }
+
+  const days = Math.floor(diff / 86400000);
+  const hours = Math.floor(diff / 3600000) % 24;
+  const minutes = Math.floor(diff / 60000) % 60;
+  const seconds = Math.floor(diff / 1000) % 60;
+
+  towerCountdownEl.innerHTML = `
+    <span>${days}</span><span class="label">days</span> :
+    <span>${hours}</span><span class="label">hours</span> :
+    <span>${minutes}</span><span class="label">minutes</span> :
+    <span>${seconds}</span><span class="label">seconds</span>
+  `;
+}
+
+updateTowerCountdown();
+setInterval(updateTowerCountdown, 1000);
 
 
 
@@ -127,6 +154,7 @@ function renderTower(votes) {
 
 loadStats();
 setInterval(loadStats, 3000);
+
 
 
 
