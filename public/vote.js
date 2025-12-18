@@ -54,8 +54,6 @@ function renderCountdown() {
 setInterval(renderCountdown, 1000);
 renderCountdown();
 
-towerCountdown.textContent = `${d}d : ${h}h : ${m}m : ${s}s`;
-
 
 
 /* VOTE */
@@ -128,6 +126,7 @@ function renderTower(votes) {
 
 loadStats();
 setInterval(loadStats, 3000);
+
 
 
 
