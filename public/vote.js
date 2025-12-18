@@ -116,7 +116,7 @@ function renderTower(votes) {
   entries.forEach((e,i) => {
     const row = document.createElement('div');
     row.className = 'towerRow';
-    row.style.top = `${142+ i * 55.5}px`;
+    row.style.top = `${142+ i * 56}px`;
     row.innerHTML = `
       <img src="media/driver-names/${e[0]}.png">
       <span>${e[1].toFixed(2)}%</span>
@@ -127,6 +127,7 @@ function renderTower(votes) {
 
 loadStats();
 setInterval(loadStats, 3000);
+
 
 
 
