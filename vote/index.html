@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>2025 Idol Korean GP Fan Vote</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<!-- PRIMARY COUNTDOWN (TOP) -->
+<div id="countdown"></div>
+
+<!-- DRIVER GRID -->
+<div class="grid" id="grid"></div>
+
+<!-- VOTE BUTTON -->
+<button id="voteBtn">VOTE NOW</button>
+
+<!-- VOTE CONFIRMATION OVERLAY -->
+<div id="overlay" onclick="closeOverlay()">
+  <img id="overlayImg">
+  <button id="shareBtn">🔗 SHARE MY VOTE</button>
+</div>
+
+<!-- STANDINGS TITLE -->
+<h2 id="standingsTitle">CURRENT STANDINGS</h2>
+
+<div id="towerWrap">
+  <img src="media/timing-tower.png" id="tower">
+  <div id="towerCountdownSimple"></div>
+  <div id="towerData"></div>
+</div>
+
+
+<script src="vote.js"></script>
+
+</body>
+</html>
+
