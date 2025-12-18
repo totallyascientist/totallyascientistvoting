@@ -49,11 +49,36 @@ function renderCountdown() {
   `;
 
   countdown.innerHTML = html;
-  towerCountdown.innerHTML = html;
 }
 
 setInterval(renderCountdown, 1000);
 renderCountdown();
+
+function rendertowerCountdown() {
+  const t = END - new Date();
+  if (t <= 0) {
+    countdown.innerHTML = 'VOTING CLOSED';
+    towerCountdown.innerHTML = 'VOTING CLOSED';
+    return;
+  }
+
+  const d = Math.floor(t / 86400000);
+  const h = Math.floor(t / 3600000) % 24;
+  const m = Math.floor(t / 60000) % 60;
+  const s = Math.floor(t / 1000) % 60;
+
+  const html = `
+    <span class="countdown-unit"><div class="countdown-value">${d}</div><div class="countdown-label">days</div></span> :
+    <span class="countdown-unit"><div class="countdown-value">${h}</div><div class="countdown-label">hours</div></span> :
+    <span class="countdown-unit"><div class="countdown-value">${m}</div><div class="countdown-label">minutes</div></span> :
+    <span class="countdown-unit"><div class="countdown-value">${s}</div><div class="countdown-label">seconds</div></span>
+  `;
+  towerCountdown.innerHTML = html;
+}
+
+setInterval(rendertowerCountdown, 1000);
+rendertowerCountdown();
+
 
 /* VOTE */
 document.getElementById('voteBtn').onclick = async () => {
@@ -114,7 +139,7 @@ function renderTower(votes) {
   entries.forEach((e,i) => {
     const row = document.createElement('div');
     row.className = 'towerRow';
-    row.style.top = `${80 + i * 24}px`;
+    row.style.top = `${100 + i * 36}px`;
     row.innerHTML = `
       <img src="media/driver-names/${e[0]}.png">
       <span>${e[1].toFixed(2)}%</span>
@@ -125,3 +150,4 @@ function renderTower(votes) {
 
 loadStats();
 setInterval(loadStats, 3000);
+
