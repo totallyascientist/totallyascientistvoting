@@ -97,7 +97,7 @@ body { background:black; color:white; margin:0; font-family:Arial }
 
 #towerCountdown {
   position:absolute;
-  top:50px;
+  top:60px;
   left:50%;
   transform:translateX(-50%);
   width:calc(100% - 10px);
@@ -132,7 +132,7 @@ body { background:black; color:white; margin:0; font-family:Arial }
 .towerRow span {
   font-family:'0arame';
   color:white;
-  margin-left:35px; /* +5px right */
+  margin-left:155px; /* +5px right */
   font-size:20px;   /* +1–2px bigger */
 }
 
@@ -153,6 +153,7 @@ body { background:black; color:white; margin:0; font-family:Arial }
 @media (max-aspect-ratio: 1/1) {
   .grid { grid-template-columns: repeat(2, 1fr); }
 }
+
 
 
 
