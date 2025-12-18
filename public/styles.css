@@ -97,14 +97,14 @@ body { background:black; color:white; margin:0; font-family:Arial }
 
 #towerCountdown {
   position:absolute;
-  top:40px;
+  top:50px;
   left:50%;
   transform:translateX(-50%);
   width:calc(100% - 10px);
   text-align:center;
   font-family:'F1';
   color:white;
-  font-size:6px; /* reduced */
+  font-size:16px; /* reduced */
   white-space:nowrap;
   z-index:5;
   pointer-events:none;
@@ -153,5 +153,6 @@ body { background:black; color:white; margin:0; font-family:Arial }
 @media (max-aspect-ratio: 1/1) {
   .grid { grid-template-columns: repeat(2, 1fr); }
 }
+
 
 
