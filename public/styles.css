@@ -118,7 +118,7 @@ body { background:black; color:white; margin:0; font-family:Arial }
 .towerRow span {
   font-family:'0arame';
   color:white;
-  margin-left:35px; /* +5px right */
+  margin-left:55px; /* +5px right */
   font-size:20px;   /* +1–2px bigger */
 }
 
@@ -143,7 +143,7 @@ body { background:black; color:white; margin:0; font-family:Arial }
 /* 🔹 Simple Timing Tower Countdown */
 #towerCountdownSimple {
   position: absolute;
-  top: 67px; /* 50px below start of timing-tower.png */
+  top: 80px; /* 50px below start of timing-tower.png */
   left: 50%;
   transform: translateX(-50%);
   font-family: 'F1';
@@ -168,4 +168,5 @@ body { background:black; color:white; margin:0; font-family:Arial }
   justify-content: center;
   gap: 6px;
 }
+
 
