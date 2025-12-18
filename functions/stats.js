@@ -26,14 +26,7 @@ export async function onRequestGet({ env }) {
     result[d] = total === 0 ? 0 : (counts[d] / total * 100);
   }
 
-  return new Response(
-    JSON.stringify({
-      percentages,
-      totalVotes
-    }),
-    {
-      headers: { 'Content-Type': 'application/json' }
-    }
-  );
+  return new Response(JSON.stringify(result, total), {
+    headers: { 'Content-Type': 'application/json' }
+  });
 }
-
