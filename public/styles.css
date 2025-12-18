@@ -110,6 +110,9 @@ body { background:black; color:white; margin:0; font-family:Arial }
   pointer-events:none;
 }
 
+.towerCountdown-value { font-size:24px; }
+.towerCountdown-label { font-size:12px; }
+
 #towerData {
   position:absolute;
   inset:0;
@@ -153,6 +156,7 @@ body { background:black; color:white; margin:0; font-family:Arial }
 @media (max-aspect-ratio: 1/1) {
   .grid { grid-template-columns: repeat(2, 1fr); }
 }
+
 
 
 
