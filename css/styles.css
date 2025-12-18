@@ -1,0 +1,68 @@
+@font-face {
+  font-family: 'Integral';
+  src: url('../fonts/Integral.otf');
+}
+
+@font-face {
+  font-family: 'NeueHaas';
+  src: url('../fonts/NeueHaas.otf');
+}
+
+@font-face {
+  font-family: '0arame';
+  src: url('../fonts/0arame.ttf');
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: black;
+  color: white;
+  font-family: 'NeueHaas', '0arame', sans-serif;
+}
+
+h1, h2, h3 {
+  font-family: 'Integral';
+}
+
+a {
+  color: white;
+  text-decoration: none;
+}
+
+section {
+  height: 100vh;
+  position: relative;
+}
+
+.full-bg {
+  background-size: cover;
+  background-position: center;
+}
+
+.center {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn {
+  background: white;
+  color: black;
+  font-family: '0arame';
+  padding: 18px;
+  width: 33vw;
+  text-align: center;
+  border-radius: 12px;
+}
+
+.fly {
+  position: absolute;
+  width: 200px;
+}
