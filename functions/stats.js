@@ -10,7 +10,12 @@ const ADMIN_KEY = "SUPER_SECRET_2025"; // 🔴 CHANGE THIS
 export async function onRequestGet({ env, request }) {
   let totalVotes = 0;
   const counts = {};
-
+  if (!env.VOTES) {
+    return new Response(
+      JSON.stringify({ error: 'KV not bound' }),
+      { status: 500, headers: { 'Content-Type': 'application/json' } }
+    );
+  }
   // Fetch votes
   for (const d of DRIVERS) {
     const v = parseInt(await env.VOTES.get(`vote_${d}`)) || 0;
@@ -31,9 +36,10 @@ export async function onRequestGet({ env, request }) {
   const isAdmin = url.searchParams.get("key") === ADMIN_KEY;
 
   // Public response
-  const response = {
-    percentages
-  };
+  const result = {};
+  for (const d of DRIVERS) {
+    result[d] = total === 0 ? 0 : (counts[d] / total * 100);
+  }
 
   // Admin-only data
   if (isAdmin) {
@@ -47,29 +53,5 @@ export async function onRequestGet({ env, request }) {
 }
 
 
-export async function onRequestGet({ env }) {
-  if (!env.VOTES) {
-    return new Response(
-      JSON.stringify({ error: 'KV not bound' }),
-      { status: 500, headers: { 'Content-Type': 'application/json' } }
-    );
-  }
 
-  let total = 0;
-  const counts = {};
 
-  for (const d of DRIVERS) {
-    const v = parseInt(await env.VOTES.get(`vote_${d}`) || '0');
-    counts[d] = v;
-    total += v;
-  }
-
-  const result = {};
-  for (const d of DRIVERS) {
-    result[d] = total === 0 ? 0 : (counts[d] / total * 100);
-  }
-
-  return new Response(JSON.stringify(result), {
-    headers: { 'Content-Type': 'application/json' }
-  });
-}
