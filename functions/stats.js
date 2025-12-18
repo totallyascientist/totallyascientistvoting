@@ -4,54 +4,29 @@ const DRIVERS = [
   'ning ning','jeongyeon','dino','felix'
 ];
 
-
-const ADMIN_KEY = "SUPER_SECRET_2025"; // 🔴 CHANGE THIS
-
-export async function onRequestGet({ env, request }) {
-  let totalVotes = 0;
-  const counts = {};
+export async function onRequestGet({ env }) {
   if (!env.VOTES) {
     return new Response(
       JSON.stringify({ error: 'KV not bound' }),
       { status: 500, headers: { 'Content-Type': 'application/json' } }
     );
   }
-  // Fetch votes
+
+  let total = 0;
+  const counts = {};
+
   for (const d of DRIVERS) {
-    const v = parseInt(await env.VOTES.get(`vote_${d}`)) || 0;
+    const v = parseInt(await env.VOTES.get(`vote_${d}`) || '0');
     counts[d] = v;
-    totalVotes += v;
+    total += v;
   }
 
-  // Calculate percentages
-  const percentages = {};
-  for (const d of DRIVERS) {
-    percentages[d] = totalVotes === 0
-      ? 0
-      : Number(((counts[d] / totalVotes) * 100).toFixed(2));
-  }
-
-  // Check admin access
-  const url = new URL(request.url);
-  const isAdmin = url.searchParams.get("key") === ADMIN_KEY;
-
-  // Public response
   const result = {};
   for (const d of DRIVERS) {
     result[d] = total === 0 ? 0 : (counts[d] / total * 100);
   }
 
-  // Admin-only data
-  if (isAdmin) {
-    response.totalVotes = totalVotes;
-    response.rawCounts = counts; // optional but useful
-  }
-
-  return new Response(JSON.stringify(response), {
-    headers: { "Content-Type": "application/json" }
+  return new Response(JSON.stringify(result), {
+    headers: { 'Content-Type': 'application/json' }
   });
 }
-
-
-
-
