@@ -96,27 +96,9 @@ body { background:black; color:white; margin:0; font-family:Arial }
 }
 
 #towerCountdown {
-  position:absolute;
-  top:60px;
-  left:50%;
-  transform:translateX(-50%);
-  width:calc(100% - 10px);
-  text-align:center;
-  font-family:'F1';
-  color:white;
   font-size:6px; /* reduced */
-  white-space:nowrap;
-  z-index:5;
-  pointer-events:none;
-}
-/* 🔹 FORCE smaller countdown inside timing tower */
-#towerCountdown.countdown-value {
-  font-size: 18px !important;
 }
 
-#towerCountdown.countdown-label {
-  font-size: 10px !important;
-}
 
 
 #towerData {
@@ -162,6 +144,7 @@ body { background:black; color:white; margin:0; font-family:Arial }
 @media (max-aspect-ratio: 1/1) {
   .grid { grid-template-columns: repeat(2, 1fr); }
 }
+
 
 
 
