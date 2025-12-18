@@ -104,7 +104,7 @@ body { background:black; color:white; margin:0; font-family:Arial }
   text-align:center;
   font-family:'F1';
   color:white;
-  font-size:16px; /* reduced */
+  font-size:6px; /* reduced */
   white-space:nowrap;
   z-index:5;
   pointer-events:none;
@@ -132,8 +132,8 @@ body { background:black; color:white; margin:0; font-family:Arial }
 .towerRow span {
   font-family:'0arame';
   color:white;
-  margin-left:25px; /* +5px right */
-  font-size:18px;   /* +1–2px bigger */
+  margin-left:35px; /* +5px right */
+  font-size:20px;   /* +1–2px bigger */
 }
 
 #standingsTitle {
@@ -153,6 +153,7 @@ body { background:black; color:white; margin:0; font-family:Arial }
 @media (max-aspect-ratio: 1/1) {
   .grid { grid-template-columns: repeat(2, 1fr); }
 }
+
 
 
 
