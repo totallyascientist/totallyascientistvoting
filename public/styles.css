@@ -1,0 +1,157 @@
+@font-face { font-family:'F1'; src:url('fonts/Formula1_Bold.ttf'); }
+@font-face { font-family:'0arame'; src:url('fonts/0arame.ttf'); }
+
+
+body { background:black; color:white; margin:0; font-family:Arial }
+
+
+#countdown {
+color:white;
+font-family:'F1';
+text-align:center;
+padding:20px;
+}
+
+
+.countdown-unit {
+display:inline-block;
+margin:0 6px;
+text-align:center;
+color: white;
+}
+
+
+.countdown-value {
+font-size:42px;/* BIG xx */
+}
+
+
+.countdown-label {
+font-size:24px; /* small words */
+}
+
+.grid {
+display:grid;
+grid-template-columns:repeat(5,1fr);
+gap:24px;
+padding:30px 28px; /* side buffer */
+}
+
+
+.card {
+position:relative;
+border-radius:12px;
+overflow:hidden;
+cursor:pointer;
+}
+
+
+.card img {
+width:100%;
+aspect-ratio:4 / 5;
+object-fit:cover;
+}
+
+
+.card.selected {
+  outline: 2px #49c0ec;
+  outline-offset: -2x;
+  box-shadow: 0 0 18px #49c0ec;
+}
+
+#voteBtn {
+  display:none;
+  position:fixed;
+  bottom:20px;
+  left:50%;
+  transform:translateX(-50%);
+  padding:16px 60px;
+  font-family:'F1';
+  background:red;
+  color:white;
+  border:none;
+  border-radius:20px;
+  font-size:20px;
+  z-index: 9999;
+}
+
+#overlay {
+  display:none;
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.85);
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+}
+
+#overlay img { width:80%; max-width:400px }
+
+#shareBtn {
+  margin-top:20px;
+  background:red;
+  color:white;
+  font-family:'F1';
+  padding:14px;
+  width:50vw;
+  border-radius:14px;
+}
+
+#towerWrap { position:relative; margin:60px auto; width:300px }
+#tower { width:100% }
+
+.towerRow {
+  position:absolute;
+  left:50%;
+  display:flex;
+  align-items:center;
+}
+
+.towerRow img { width:120px }
+.towerRow span {
+  font-family:'0arame';
+  color:white;
+  margin-left:20px;
+}
+
+.centered {
+  position:absolute;
+  top:50%;
+  left:50%;
+  transform:translate(-50%,-50%);
+}
+.some-text {
+  font-family: '0arame';
+}
+
+#standingsTitle {
+  font-family: '0arame', sans-serif;
+  color: white;
+  text-align: center;
+  margin: 30px 0 10px;
+}
+
+#towerCountdown {
+  position:absolute;
+  top:40px; /* 40px below top of timing tower */
+  left:50%;
+  transform:translateX(-50%);
+  width:90%;
+  text-align:center;
+  font-family:'F1';
+  color:white;
+  pointer-events:none;
+}
+
+/* 🔹 RESPONSIVE GRID MODES */
+@media (min-aspect-ratio: 2/1) {
+  .grid { grid-template-columns: repeat(10, 1fr); }
+}
+
+@media (min-aspect-ratio: 1/1) and (max-aspect-ratio: 2/1) {
+  .grid { grid-template-columns: repeat(5, 1fr); }
+}
+
+@media (max-aspect-ratio: 1/1) {
+  .grid { grid-template-columns: repeat(2, 1fr); }
+}
