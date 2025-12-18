@@ -107,6 +107,17 @@ object-fit:cover;
   align-items:center;
 }
 
+#timing-tower {
+  position: relative;
+  z-index: 1;
+}
+
+.tower-overlay {
+  position: absolute;
+  z-index: 5;
+  pointer-events: none;
+}
+
 .towerRow img { width:120px }
 .towerRow span {
   font-family:'0arame';
@@ -156,3 +167,4 @@ object-fit:cover;
   .grid { grid-template-columns: repeat(2, 1fr); }
 
 }
+
