@@ -118,8 +118,9 @@ body { background:black; color:white; margin:0; font-family:Arial }
 .towerRow span {
   font-family:'0arame';
   color:white;
-  margin-left:55px; /* +5px right */
+  margin-left:35px; /* +5px right */
   font-size:20px;   /* +1–2px bigger */
+  transform: translateX(20px); /* MOVE RIGHT ONLY */
 }
 
 #standingsTitle {
@@ -168,5 +169,6 @@ body { background:black; color:white; margin:0; font-family:Arial }
   justify-content: center;
   gap: 6px;
 }
+
 
 
