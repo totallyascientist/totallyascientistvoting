@@ -1,4 +1,4 @@
-export async function onRequestGet({ request, env }) {
+export async function onRequestPost({ request, env }) {
   if (!env.VOTES) {
     return new Response('KV not bound', { status: 500 });
   }
